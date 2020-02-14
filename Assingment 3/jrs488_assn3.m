@@ -54,4 +54,4 @@ imshow(newimg)
 figure(2)
 newimg = uint8(newimg);
 imshow(newimg)
-%proje c
+%projqzqj
