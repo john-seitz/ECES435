@@ -8,4 +8,3 @@ img2 = double(img2); %watermark image to double
 bp = get_bitplane(img2,8); %use created get_bitplane function to get bitplane from watermark image
 newimg = bitset(img1,N,bp); %create the new img1 by replacing the 'N' bitplane with the bitplane from watermark image (img2)
 end
-
