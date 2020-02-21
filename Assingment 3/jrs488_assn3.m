@@ -46,10 +46,7 @@ end
 %% Part 1 - 3rd Task
 P = imread('peppers.tif'); %Read in image as unit8
 B = imread('baboon.tif'); %Read in image as unit8
-
-figure(1)
-newimg = watermark(P,B,1);
-imshow(newimg)
+Barb = imread('Barbara.bmp'); %Read in image as unit8
 
 figure(2)
 newimg = uint8(newimg);
