@@ -66,18 +66,6 @@ subplot(2,4,4)
 newimg = watermark2(newimg,Barb,4,5);
 imshow(uint8(newimg))
 
-subplot(2,4,5)
-newimg = watermark2(newimg,Barb,5,4);
-imshow(uint8(newimg))
-
-subplot(2,4,6)
-newimg = watermark2(newimg,Barb,6,3);
-imshow(uint8(newimg))
-
-subplot(2,4,7)
-newimg = watermark2(newimg,Barb,7,2);
-imshow(uint8(newimg))
-
-subplot(2,4,8)
-newimg = watermark2(newimg,Barb,8,1);
+subplot(2,4,4)
+newimg = watermark2(newimg,Barb,5,5);
 imshow(uint8(newimg))

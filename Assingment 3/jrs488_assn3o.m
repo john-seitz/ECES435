@@ -44,40 +44,14 @@ imshow(wmk3_Bitplane) %show bitplane
 end
 
 %% Part 1 - 3rd Task
-Pep = imread('peppers.tif'); %Read in image as unit8
-Bab = imread('baboon.tif'); %Read in image as unit8
-Barb = imread('Barbara.bmp'); %Read in image as unit8
+P = imread('peppers.tif'); %Read in image as unit8
+B = imread('baboon.tif'); %Read in image as unit8
 
-figure(6)
+figure(1)
+newimg = watermark(P,B,1);
+imshow(newimg)
 
-subplot(2,4,1)
-newimg = watermark2(Pep,Barb,1,8);
-imshow(uint8(newimg))
-
-subplot(2,4,2)
-newimg = watermark2(newimg,Barb,2,7);
-imshow(uint8(newimg))
-
-subplot(2,4,3)
-newimg = watermark2(newimg,Barb,3,6);
-imshow(uint8(newimg))
-
-subplot(2,4,4)
-newimg = watermark2(newimg,Barb,4,5);
-imshow(uint8(newimg))
-
-subplot(2,4,5)
-newimg = watermark2(newimg,Barb,5,4);
-imshow(uint8(newimg))
-
-subplot(2,4,6)
-newimg = watermark2(newimg,Barb,6,3);
-imshow(uint8(newimg))
-
-subplot(2,4,7)
-newimg = watermark2(newimg,Barb,7,2);
-imshow(uint8(newimg))
-
-subplot(2,4,8)
-newimg = watermark2(newimg,Barb,8,1);
-imshow(uint8(newimg))
+figure(2)
+newimg = uint8(newimg);
+imshow(newimg)
+%pr

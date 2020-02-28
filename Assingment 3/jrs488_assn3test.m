@@ -1,28 +1,20 @@
-close all; clear all; clc;
-
-P = imread('peppers.tif'); %Read in image as unit8
-B = imread('baboon.tif'); %Read in image as unit8
+Pep = imread('peppers.tif'); %Read in image as unit8
+Bab = imread('baboon.tif'); %Read in image as unit8
 Barb = imread('Barbara.bmp'); %Read in image as unit8
 
-
-
 figure(1)
-% newimg = watermark(P,Barb,[8 7], [1 2]);
-newimg = watermark(P,Barb);
-imshow(uint8(newimg))
 
-figure(2)
+for I = 1:8
+    for K = 8:-1:1
+newimg = watermark2(Pep,Barb,I,K);
+subplot(2,4,I)
+imshow(newimg) %show bitplane
+end
+end
+
+% newimg = watermark2(Pep,Barb,1,8);
+% imshow(uint8(newimg))
+% 
 test = get_bitplane(newimg,1);
-imshow(test)
-
-figure(3)
-test = get_bitplane(newimg,2);
-imshow(test)
-
-figure(4)
-test = get_bitplane(Barb,7);
-imshow(test)
-
-figure(5)
-test = get_bitplane(Barb,8);
-imshow(test)
+figure (2);
+imshow(test) 
