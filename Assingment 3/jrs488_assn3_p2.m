@@ -25,7 +25,7 @@ end
 imwrite(wmkimages(:,:,1),'peppers_ymwmk.tiff','tiff'); % save the Yeung-Mintzer watermarked image as tiff
 imwrite(wmkimages(:,:,2),'baboon_ymwmk.tiff','tiff');  % save the Yeung-Mintzer watermarked image as tiff
 
-%% Part 2 - 1st Task - Extract the watermark embedded in the given image using key 435
+%% Part 2 - 2nd Task - Extract the watermark embedded in the given image using key 435
 
 figure(2*i+1) % create figures of length i*2+1
 
@@ -39,3 +39,46 @@ title('YMwmkedKey435.tiff')
 subplot(1,2,2)
 imshow(newimg)
 title('Extracted Watermark')
+
+%% Part 2 - 3rd Task - Extract the watermark embedded in the given image using key 435 
+
+baboon_ymwmk = imread('baboon_ymwmk.tiff'); % Read in Yeung-Mintzer watermarked image
+peppers_ymwmk = imread('peppers_ymwmk.tiff'); % Read in Yeung-Mintzer watermarked image
+
+bab = imread('baboon.tif'); % Read in original host images
+pep = imread('peppers.tif'); % Read in original host images
+
+wmk = imread('Barbara.bmp'); % Read in Watermark image
+
+
+pep_lsb = watermark_2(pep, wmk,3);
+bab_lsb = watermark_2(bab, wmk,3);
+both_lsb = [pep_lsb(1:256,:);bab_lsb(257:512,:)];
+
+figure(6)
+imshow(both_lsb)
+title('LSB Watermark Manipulation')
+
+figure(7);
+splitimg(both_lsb);
+
+%% Yeung-Mintzer watermarked image
+both_img = [pep(1:256,:);baboon_ymwmk(257:512,:)]; % Image with both halves put together
+wmk_img = YMD(both_img,0);
+
+figure(8)
+subplot(1,2,1)
+imshow(both_img)
+title('Peppers and Baboons Watermark')
+subplot(1,2,2)
+imshow(wmk_img);
+
+test_ym = [peppers_ymwmk(1:256,:);baboon_ymwmk(257:512,:)]; % Test out an attack with the Yeung-Mintzer
+YME_wmk = YMD(test_ym,0);
+
+figure(9)
+subplot(1,2,1)
+imshow(test_ym)
+title('Peppers Watermark and Baboons Watermark')
+subplot(1,2,2)
+imshow(YME_wmk);

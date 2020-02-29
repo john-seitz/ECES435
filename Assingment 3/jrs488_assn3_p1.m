@@ -7,19 +7,28 @@ close all; clear all; clc;
 P = imread('peppers.tif'); %Read in image as unit8
 B = imread('baboon.tif'); %Read in image as unit8
 
-P_Bitplane = get_bitplane(P,1); %extract 1st bitplane of image P, using function
-B_Bitplane = get_bitplane(B,1); %extract 1st bitplane of image B, using function
-
 figure (1);
+for I = 1:8
+P_Bitplane = get_bitplane(P,I); %extract 1st bitplane of image P, using function
+subplot(2,4,I)
 imshow(P_Bitplane) %show bitplane
+title (['Bitplane = ',sprintf('%d',I)])
+end
 
 figure (2);
+for I = 1:8
+B_Bitplane = get_bitplane(B,I); %extract 1st bitplane of image P, using function
+subplot(2,4,I)
 imshow(B_Bitplane) %show bitplane
+title (['Bitplane = ',sprintf('%d',I)])
+end
 
 %% Part 1 - 2nd Task - Examine bitplanes of images
 wmk1 = imread('LSBwmk1.tiff'); %Read in image as unit8
 wmk2 = imread('LSBwmk2.tiff'); %Read in image as unit8
 wmk3 = imread('LSBwmk3.tiff'); %Read in image as unit8
+
+
 
 figure(3)
 
@@ -27,6 +36,7 @@ for I = 1:8
 wmk1_Bitplane = get_bitplane(wmk1,I); %extract 1st bitplane of image P, using function
 subplot(2,4,I)
 imshow(wmk1_Bitplane) %show bitplane
+title (['Bitplane = ',sprintf('%d',I)])
 end
 
 figure(4)
@@ -34,6 +44,7 @@ for I = 1:8
 wmk2_Bitplane = get_bitplane(wmk2,I); %extract 1st bitplane of image P, using function
 subplot(2,4,I)
 imshow(wmk2_Bitplane) %show bitplane
+title (['Bitplane = ',sprintf('%d',I)])
 end
 
 figure(5)
@@ -42,7 +53,9 @@ for I = 1:8
 wmk3_Bitplane = get_bitplane(wmk3,I); %extract 1st bitplane of image P, using function
 subplot(2,4,I)
 imshow(wmk3_Bitplane) %show bitplane
+title (['Bitplane = ',sprintf('%d',I)])
 end
+
 
 %% Part 1 - 3rd Task - Embed one image bitplanes into another's
 
