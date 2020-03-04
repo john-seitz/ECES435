@@ -53,7 +53,7 @@ wmk = imread('Barbara.bmp'); % Read in Watermark image
 
 pep_lsb = watermark_2(pep, wmk,3);
 bab_lsb = watermark_2(bab, wmk,3);
-both_lsb = [pep_lsb(1:256,:);bab_lsb(257:512,:)];
+both_lsb = [pep_lsb(257:512,:);bab_lsb(257:512,:)];
 
 figure(6)
 imshow(both_lsb)
@@ -63,7 +63,7 @@ figure(7);
 splitimg(both_lsb);
 
 %% Yeung-Mintzer watermarked image
-both_img = [pep(1:256,:);baboon_ymwmk(257:512,:)]; % Image with both halves put together
+both_img = [pep(257:512,:);baboon_ymwmk(257:512,:)]; % Image with both halves put together
 wmk_img = YMD(both_img,0);
 
 figure(8)
@@ -73,7 +73,7 @@ title('Peppers and Baboons Watermark')
 subplot(1,2,2)
 imshow(wmk_img);
 
-test_ym = [peppers_ymwmk(1:256,:);baboon_ymwmk(257:512,:)]; % Test out an attack with the Yeung-Mintzer
+test_ym = [peppers_ymwmk(257:512,:);baboon_ymwmk(257:512,:)]; % Test out an attack with the Yeung-Mintzer
 YME_wmk = YMD(test_ym,0);
 
 figure(9)
@@ -82,3 +82,9 @@ imshow(test_ym)
 title('Peppers Watermark and Baboons Watermark')
 subplot(1,2,2)
 imshow(YME_wmk);
+
+%% Functions Below
+type YME.m
+type YMD.m
+type splitimg.m
+type pixcorrect.m

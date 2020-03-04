@@ -140,3 +140,7 @@ newimg = watermark2(newimg,Barb,8,8);
 imshow(newimg)
 
 sgtitle('"Barbara" embeded into "Baboon"')
+
+%% Functions Below
+type watermark2.m
+type get_bitplane.m
