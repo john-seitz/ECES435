@@ -18,4 +18,5 @@ else
     end
 end
 
-
+%% Function of Artifact Detector is below
+type ArtifactDetector.m
