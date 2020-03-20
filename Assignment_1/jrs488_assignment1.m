@@ -1,4 +1,4 @@
-l%ECES435 Assignment 1 - By Wanyu Li and John Seitz
+%ECES435 Assignment 1 - By Wanyu Li and John Seitz
 close all; clear all; clc;
 %% Part 1 - Contrast Enhancment on Images
 

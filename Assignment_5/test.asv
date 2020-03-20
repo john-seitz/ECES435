@@ -27,28 +27,10 @@ end
 %% 
 P2Imgs = {'unaltIm1.tif','unaltIm2.tif','unaltIm3.tif'};
 testimg = imread(P2Imgs{3});
-
 figure (1);
 imshow(testimg)
-title 'Original'
-
 figure (2);
 gamma = 0.7;
 img2 = gammacorrect(gamma,testimg);
 img3 = uint8(img2);
 imshow(img2)
-title 'Gamma = 0.7'
-%%
-
-pout = imread('unaltIm1.tif');
-
-figure(1);
-imshow(pout)
-title 'Original'
-
-figure(2);
-gamma = 0.7; %user specified gamma value
-Newimg = gammacorrect(gamma,pout); %gamma correction function
-newpout = uint8(Newimg); %change corrected image to unit8 type
-imshow(newpout)
-title 'Gamma = 1'
