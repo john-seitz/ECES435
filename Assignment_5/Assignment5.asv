@@ -74,16 +74,14 @@ subplot(1,2,2);
 imhist(P3Img);
 title('Images PVH');
 
-%% Part 2 - 1st Task
+%% Part 2 - 1st Task - Detecting Image Resampling and Resizing
 
-% initializing and set parameters
 P2Imgs = {'resamp1.tif','resamp2.tif','resamp3.tif','resamp4.tif'};
-lamda = 1;
-tau = 2;
-sigma = 1;
-%get p map and freq p map for each img. 
+%
+l = 1; % Lamda value
+t = 2; % Tau value
+s = 1; % Sigma value
 
 for i = 1: length(P2Imgs)
-    p_map = Kirchner(P2Imgs{i},lamda,tau,sigma);
-    
+    p_map = kirchnerPmap(P2Imgs{i},l,t,s); %Apply Kirchner P map function to obtain p map and frequency p map
 end
