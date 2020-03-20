@@ -2,46 +2,21 @@
 close all; clear all; clc;
 %% Part 1 - 1st Task - Contrast Enhancement
 
-P2Imgs = {'unaltIm1.tif','unaltIm2.tif','unaltIm3.tif'};
 
-for k = 1:length(P2Imgs)
-    
-    img = imread(P2Imgs{k});
-    figure(k);
-    subplot(2,3,1);
-    imshow(img);
-    title('Original Image PVH')
-    
-    subplot(2,3,2);
-    newimg = gammacorrect(0.7,img);
-    newimg = uint8(newimg);
-    imshow(newimg)
-    title 'Gamma = 0.7 PVH'
-    
-    subplot(2,3,3);
-    newimg = gammacorrect(1.3,img);
-    newimg = uint8(newimg);
-    imshow(newimg)
-    title 'Gamma = 1.3 PVH'
-    
-    img = imread(P2Imgs{k});
-    figure(k);
-    subplot(2,3,4);
-    imhist(img);
-    title('Original Image PVH')
-    
-    subplot(2,3,5);
-    newimg = gammacorrect(0.7,img);
-    newimg = uint8(newimg);
-    imhist(newimg)
-    title 'Gamma = 0.7 PVH'
-    
-    subplot(2,3,6);
-    newimg = gammacorrect(1.3,img);
-    newimg = uint8(newimg);
-    imhist(newimg)
-    title 'Gamma = 1.3 PVH'
-    
+Imgs = {'imageCE1.tif','imageCE2.tif','imageCE3.tif','imageCE4.tif'};
+%Load in images
+
+
+for i = 1:length(Imgs) % Loop for all 4 images
+    newimg = imread(Imgs{i});
+    figure(i);
+    subplot(1,3,1);
+    imshow(newimg);
+    title('Image {i}');
+    subplot(1,3,2);
+    imhist(newimg); % use imhist to calculate the image's PVH
+    title('imhist Pixel Histogram');
+    subplot(1,3,3);
+    bar(newimg); % use the bar function to display as stem plots
+    title('Bar Pixel Histogram');
 end
-
-%%

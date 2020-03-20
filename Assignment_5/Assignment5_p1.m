@@ -9,56 +9,81 @@ Imgs = {'imageCE1.tif','imageCE2.tif','imageCE3.tif','imageCE4.tif'};
 for i = 1:length(Imgs) % Loop for all 4 images
     newimg = imread(Imgs{i});
     figure(i);
-    subplot(1,3,1);
+    subplot(1,2,1);
     imshow(newimg);
-    title('Image {i}');    
-    subplot(1,3,2);
+    title('Image');
+    subplot(1,2,2);
     imhist(newimg); % use imhist to calculate the image's PVH
-    title('imhist Pixel Histogram');
-    subplot(1,3,3);
-    bar(newimg); % use the bar function to display as stem plots
-    title('Bar Pixel Histogram');
+    title('Image Pixel Histogram');
 end
 
-%% Part 1 - 2nd Task  Gamma Correction
+%% Part 1 - 2nd Task - Gamma Correction
 
-P2Imgs = {'unaltIm1.tif','unaltIm2.tif','unaltIm3.tif'};
-Gamma = {0.7,1.3}; % Apply gamma correction at gamme = 0.7 and 1.3 
+P12Imgs = {'unaltIm1.tif','unaltIm2.tif','unaltIm3.tif'};
 
-
-for k = 1:length(Gamma)
-    for j = 1:length(P2Imgs)
-       figure
-       NewImg = GammaCorrection(P2Imgs{j},Gamma{k});
-       %Performing gamma correction to the img with respecte to gamma
-       %value
-    end
+for k = 1:length(P12Imgs)
+    
+    img = imread(P12Imgs{k});
+    figure(k);
+    subplot(2,3,1);
+    imshow(img);
+    title('Original Image')
+    
+    subplot(2,3,2);
+    newimg = gammacorrect(0.7,img);
+    newimg = uint8(newimg);
+    imshow(newimg)
+    title 'Gamma = 0.7 Image'
+    
+    subplot(2,3,3);
+    newimg = gammacorrect(1.3,img);
+    newimg = uint8(newimg);
+    imshow(newimg)
+    title 'Gamma = 1.3 Image'
+    
+    img = imread(P12Imgs{k});
+    figure(k);
+    subplot(2,3,4);
+    imhist(img);
+    title('Original Image PVH')
+    
+    subplot(2,3,5);
+    newimg = gammacorrect(0.7,img);
+    newimg = uint8(newimg);
+    imhist(newimg)
+    title 'Gamma = 0.7 PVH'
+    
+    subplot(2,3,6);
+    newimg = gammacorrect(1.3,img);
+    newimg = uint8(newimg);
+    imhist(newimg)
+    title 'Gamma = 1.3 PVH'
+    
 end
 
-%% Part 1 - 3rd Task Contractive or Expansive 
-IMG5 = imread('imageCE5.tif');
+%% Part 1 - 3rd Task - Contractive or Expansive Mappings
+
+P3Img = imread('imageCE5.tif');
+
 figure
 subplot(1,2,1);
-imshow(IMG5);
-title('imageCE5.tif');
-subplot(1,2,2);
-[Count, Bin] = imhist(newimg,bin);
-bar(Bin,Count);
-%get the img histogram and plot as bar 
+imshow(P3Img);
+title('Image');
 
+subplot(1,2,2);
+imhist(P3Img);
+title('Images PVH');
 
 %% Part 2 - 1st Task
 
-close all; clear all; clc;
-format compact;
 % initializing and set parameters
-PATH = {'resamp1.tif','resamp2.tif','resamp3.tif','resamp4.tif'};
+P2Imgs = {'resamp1.tif','resamp2.tif','resamp3.tif','resamp4.tif'};
 lamda = 1;
 tau = 2;
 sigma = 1;
 %get p map and freq p map for each img. 
 
-for i = 1: length(PATH)
-    p_map = Kirchner(PATH{i},lamda,tau,sigma);
+for i = 1: length(P2Imgs)
+    p_map = Kirchner(P2Imgs{i},lamda,tau,sigma);
     
 end
