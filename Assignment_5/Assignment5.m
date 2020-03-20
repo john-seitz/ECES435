@@ -1,5 +1,7 @@
 %ECES435 Assignment 5 - By Wanyu Li and John Seitz
 close all; clear all; clc;
+%Note: Code works best if you run each section independently!
+
 %% Part 1 - 1st Task - Contrast Enhancement
 
 Imgs = {'imageCE1.tif','imageCE2.tif','imageCE3.tif','imageCE4.tif'};
@@ -11,7 +13,7 @@ for i = 1:length(Imgs) % Loop for all 4 images
     figure(i);
     subplot(1,2,1);
     imshow(newimg);
-    title('Image');
+    title(['Image',sprintf('%d',i)]);
     subplot(1,2,2);
     imhist(newimg); % use imhist to calculate the image's PVH
     title('Image Pixel Histogram');
