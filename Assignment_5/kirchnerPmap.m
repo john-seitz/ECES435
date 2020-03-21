@@ -8,19 +8,19 @@ img = double(imread(Image));
 [x y] = size(img); % Get image dimensions 
 
 alpha_filter = [-0.25 0.5 -0.25
-        0.5 0 0.5
-        -0.25 0.5 -0.25];
+                  0.5 0 0.5
+                -0.25 0.5 -0.25];
     
 newimg = filter2(alpha_filter, img); % Apply the alpha filter
 Error = img - newimg; % Calculate the error
 p = lamda*exp(-Error.^tau/sigma); % Obtain the p-map
 
 figure;
-subplot(1,3,1);
+subplot(3,1,1);
 imshow(uint8(img));%show the original img
 title(string(Image));
 
-subplot(1,3,2);
+subplot(3,1,2);
 imagesc(p) % display the calculated p-map
 title('Images P Map');
 
@@ -32,7 +32,7 @@ axis off;
 xlim([1 y]);
 ylim([1 x]);
 
-subplot(1,3,3);
+subplot(3,1,3);
 showFreqPmap(p);
 title('Images Freq P map');
 

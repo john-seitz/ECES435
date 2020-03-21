@@ -89,3 +89,6 @@ s = 1; % Sigma value
 for i = 1: length(P2Imgs)
     p_map = kirchnerPmap(P2Imgs{i},l,t,s); %Apply Kirchner P map function to obtain p map and frequency p map
 end
+
+%Following 
+type kirchnerPmap.m
